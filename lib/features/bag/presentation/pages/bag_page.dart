@@ -236,39 +236,6 @@ class _ShoppingBagPageState extends State<ShoppingBagPage> {
   Widget _buildDesktopLayout() {
     return Row(
       children: [
-        // Left column - navigation - 20% width
-        Expanded(
-          flex: 2,
-          child: Container(
-            color: Colors.grey[850],
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Menu',
-                    style: GoogleFonts.poppins(
-                      color: Colors.white,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 32),
-                  _buildNavItem(Icons.home, 'Home', false),
-                  _buildNavItem(Icons.shopping_cart, 'Cart', true),
-                  _buildNavItem(Icons.favorite, 'Favorites', false),
-                  _buildNavItem(Icons.history, 'Order History', false),
-                  _buildNavItem(Icons.person, 'Profile', false),
-                  _buildNavItem(Icons.settings, 'Settings', false),
-                  const Spacer(),
-                  _buildNavItem(Icons.help, 'Help & Support', false),
-                  _buildNavItem(Icons.logout, 'Logout', false),
-                ],
-              ),
-            ),
-          ),
-        ),
         // Middle column - items - 50% width
         Expanded(
           flex: 5,
@@ -342,93 +309,108 @@ class _ShoppingBagPageState extends State<ShoppingBagPage> {
             color: Colors.grey[900],
             child: Padding(
               padding: const EdgeInsets.all(24.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Order Summary',
-                    style: GoogleFonts.poppins(
-                      color: Colors.white,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 32),
-                  _buildSubtotalContainer(),
-                  const SizedBox(height: 24),
-                  _buildCutleryContainer(),
-                  const SizedBox(height: 24),
-                  // Promo code input (desktop only)
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey[850],
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Promo Code',
-                          style: GoogleFonts.poppins(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  return SingleChildScrollView(
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(
+                        minHeight: constraints.maxHeight,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Order Summary',
+                            style: GoogleFonts.poppins(
+                              color: Colors.white,
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 8),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  hintText: 'Enter promo code',
-                                  hintStyle: GoogleFonts.poppins(
-                                    color: Colors.grey,
-                                    fontSize: 14,
-                                  ),
-                                  filled: true,
-                                  fillColor: Colors.grey[800],
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(8),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                  contentPadding: const EdgeInsets.symmetric(
-                                    horizontal: 16,
-                                    vertical: 12,
-                                  ),
-                                ),
-                                style: GoogleFonts.poppins(color: Colors.white),
-                              ),
+                          const SizedBox(height: 32),
+                          _buildSubtotalContainer(),
+                          const SizedBox(height: 24),
+                          _buildCutleryContainer(),
+                          const SizedBox(height: 24),
+                          // Promo code input (desktop only)
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.grey[850],
+                              borderRadius: BorderRadius.circular(10),
                             ),
-                            const SizedBox(width: 8),
-                            ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.orange,
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 16,
-                                  vertical: 12,
+                            padding: const EdgeInsets.all(16),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Promo Code',
+                                  style: GoogleFonts.poppins(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
+                                const SizedBox(height: 8),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: TextField(
+                                        decoration: InputDecoration(
+                                          hintText: 'Enter promo code',
+                                          hintStyle: GoogleFonts.poppins(
+                                            color: Colors.grey,
+                                            fontSize: 14,
+                                          ),
+                                          filled: true,
+                                          fillColor: Colors.grey[800],
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            borderSide: BorderSide.none,
+                                          ),
+                                          contentPadding:
+                                              const EdgeInsets.symmetric(
+                                            horizontal: 16,
+                                            vertical: 12,
+                                          ),
+                                        ),
+                                        style: GoogleFonts.poppins(
+                                            color: Colors.white),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 8),
+                                    ElevatedButton(
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.orange,
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 16,
+                                          vertical: 12,
+                                        ),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                      ),
+                                      child: Text(
+                                        'Apply',
+                                        style: GoogleFonts.poppins(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                              child: Text(
-                                'Apply',
-                                style: GoogleFonts.poppins(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                              ],
                             ),
-                          ],
-                        ),
-                      ],
+                          ),
+                          const SizedBox(height: 24), // Prevents spacing issues
+                          _buildTotalContainer(isEmbedded: true),
+                        ],
+                      ),
                     ),
-                  ),
-                  const Spacer(),
-                  _buildTotalContainer(isEmbedded: true),
-                ],
+                  );
+                },
               ),
             ),
           ),
@@ -697,48 +679,6 @@ class _ShoppingBagPageState extends State<ShoppingBagPage> {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  // Desktop navigation item
-  Widget _buildNavItem(IconData icon, String label, bool isActive) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12.0),
-      child: Row(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              color: isActive ? Colors.orange : Colors.transparent,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            padding: const EdgeInsets.all(8),
-            child: Icon(
-              icon,
-              color: isActive ? Colors.white : Colors.grey,
-              size: 24,
-            ),
-          ),
-          const SizedBox(width: 12),
-          Text(
-            label,
-            style: GoogleFonts.poppins(
-              color: isActive ? Colors.orange : Colors.white,
-              fontSize: 16,
-              fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
-            ),
-          ),
-          if (isActive)
-            Container(
-              width: 4,
-              height: 24,
-              margin: const EdgeInsets.only(left: 8),
-              decoration: BoxDecoration(
-                color: Colors.orange,
-                borderRadius: BorderRadius.circular(2),
-              ),
-            ),
-        ],
       ),
     );
   }
