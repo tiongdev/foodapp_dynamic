@@ -72,9 +72,8 @@ class _BagMobileViewState extends State<BagMobileView> {
               bagWidgets.buildAddMoreItemsButton(),
               // Subtotal Container
               bagWidgets.buildSubtotalContainer(),
-              // Include Cutlery Container
 
-              const SizedBox(height: 100),
+              const SizedBox(height: 150),
             ],
           ),
         ),
