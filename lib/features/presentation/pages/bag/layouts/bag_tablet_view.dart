@@ -1,6 +1,6 @@
 import 'package:easy_stepper/easy_stepper.dart';
 import 'package:flutter/material.dart';
-import 'package:foodapp_dynamic/features/bag/presentation/widgets/bag_widgets.dart';
+import 'package:foodapp_dynamic/features/presentation/widgets/bag_widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BagTabletView extends StatefulWidget {
@@ -105,8 +105,6 @@ class _BagTabletViewState extends State<BagTabletView> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          const SizedBox(height: 24),
-                          bagWidgets.buildSubtotalContainer(),
                           const SizedBox(height: 16),
                           bagWidgets.buildPromoCodeContainer(),
                           const SizedBox(height: 16),

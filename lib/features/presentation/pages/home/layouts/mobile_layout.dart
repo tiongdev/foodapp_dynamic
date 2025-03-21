@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
-import '../../widgets/carousel_card.dart';
-import '../../widgets/category_container.dart';
-import '../../widgets/sushi_card.dart';
-import '../product/product_details_page.dart';
+import '../../../widgets/carousel_card.dart';
+import '../../../widgets/category_container.dart';
+import '../../../widgets/sushi_card.dart';
+import '../../product/product_details_page.dart';
 
-class TabletLayout extends StatelessWidget {
+class MobileLayout extends StatelessWidget {
   final String selectedCategory;
   final List<Map<String, dynamic>> filteredSushiItems;
   final Function(String) updateCategory;
 
-  const TabletLayout({
+  const MobileLayout({
     Key? key,
     required this.selectedCategory,
     required this.filteredSushiItems,
@@ -68,64 +68,57 @@ class TabletLayout extends StatelessWidget {
               ],
             ),
           ),
-          SushiCarousel(selectedCategory: selectedCategory),
-          // Grid layout for tablet
           Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: GridView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 2,
-                crossAxisSpacing: 6,
-                mainAxisSpacing: 6,
-              ),
-              itemCount: filteredSushiItems.length,
-              itemBuilder: (context, index) {
-                final item = filteredSushiItems[index];
-                return SushiCard(
-                  title: item['title'],
-                  price: item['price'],
-                  image: item['image'],
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ProductDetailPage(),
-                      ),
-                    );
-                  },
-                );
-              },
-            ),
-          ),
-          // Premium items section
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
               children: [
-                const Row(
-                  children: [
-                    Icon(
-                      LucideIcons.crown,
-                      color: Colors.orange,
-                    ),
-                    SizedBox(width: 8),
-                    Text(
-                      'Premium Items',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.orange,
+                SushiCarousel(selectedCategory: selectedCategory),
+                ...filteredSushiItems.map((item) => SushiCard(
+                      title: item['title'],
+                      price: item['price'],
+                      image: item['image'],
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProductDetailPage(
+                              title: item['title'],
+                              price: item['price'],
+                              image: item['image'],
+                            ),
+                          ),
+                        );
+                      },
+                    )),
+                const SizedBox(height: 16),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Row(
+                        children: [
+                          Icon(
+                            LucideIcons.crown,
+                            color: Colors.orange,
+                          ),
+                          SizedBox(width: 8),
+                          Text(
+                            'Premium Items',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.orange,
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
-                ),
-                TextButton(
-                  onPressed: () {},
-                  child: const Text('See all'),
+                      TextButton(
+                        onPressed: () {},
+                        child: const Text('See all'),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

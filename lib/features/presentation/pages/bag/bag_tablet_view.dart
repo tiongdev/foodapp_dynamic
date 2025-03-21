@@ -1,19 +1,19 @@
 import 'package:easy_stepper/easy_stepper.dart';
 import 'package:flutter/material.dart';
+import 'package:foodapp_dynamic/features/presentation/widgets/bag_widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../widgets/bag_widgets.dart';
-
-class BagDesktopView extends StatefulWidget {
-  const BagDesktopView({super.key});
+class BagTabletView extends StatefulWidget {
+  const BagTabletView({super.key});
 
   @override
-  State<BagDesktopView> createState() => _BagDesktopViewState();
+  State<BagTabletView> createState() => _BagTabletViewState();
 }
 
-class _BagDesktopViewState extends State<BagDesktopView> {
+class _BagTabletViewState extends State<BagTabletView> {
   final BagWidgets bagWidgets = BagWidgets();
   bool _isToggled = false;
+
   void _handleToggle(bool value) {
     setState(() {
       _isToggled = value;
@@ -24,12 +24,12 @@ class _BagDesktopViewState extends State<BagDesktopView> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        // Middle column - items - 50% width
+        // Left column - 60% width
         Expanded(
-          flex: 5,
+          flex: 6,
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(24.0),
+              padding: const EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -72,15 +72,6 @@ class _BagDesktopViewState extends State<BagDesktopView> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 24),
-                  Text(
-                    'Your Items',
-                    style: GoogleFonts.poppins(
-                      color: Colors.white,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
                   const SizedBox(height: 16),
                   bagWidgets.buildDeliveryTimeContainer(),
                   bagWidgets.buildBagItems(),
@@ -90,20 +81,19 @@ class _BagDesktopViewState extends State<BagDesktopView> {
             ),
           ),
         ),
-        // Right column - summary - 30% width
+        // Right column - 40% width
         Expanded(
-          flex: 3,
+          flex: 4,
           child: Container(
             color: Colors.grey[900],
             child: Padding(
-              padding: const EdgeInsets.all(24.0),
+              padding: const EdgeInsets.all(16.0),
               child: LayoutBuilder(
                 builder: (context, constraints) {
                   return SingleChildScrollView(
                     child: ConstrainedBox(
-                      constraints: BoxConstraints(
-                        minHeight: constraints.maxHeight,
-                      ),
+                      constraints:
+                          BoxConstraints(minHeight: constraints.maxHeight),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -111,21 +101,16 @@ class _BagDesktopViewState extends State<BagDesktopView> {
                             'Order Summary',
                             style: GoogleFonts.poppins(
                               color: Colors.white,
-                              fontSize: 24,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          const SizedBox(height: 32),
-                          bagWidgets.buildSubtotalContainer(),
-                          const SizedBox(height: 24),
+                          const SizedBox(height: 16),
                           bagWidgets.buildPromoCodeContainer(),
                           const SizedBox(height: 16),
                           bagWidgets.buildCutleryContainer(
                               _isToggled, _handleToggle),
-                          const SizedBox(height: 24),
-                          // Promo code input (desktop only)
-
-                          const SizedBox(height: 24), // Prevents spacing issues
+                          const SizedBox(height: 16),
                           bagWidgets.buildTotalContainer(isEmbedded: true),
                         ],
                       ),

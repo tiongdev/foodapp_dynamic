@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
-import '../../widgets/carousel_card.dart';
-import '../../widgets/category_container.dart';
-import '../../widgets/sushi_card.dart';
-import '../product/product_details_page.dart';
+import '../../../widgets/carousel_card.dart';
+import '../../../widgets/category_container.dart';
+import '../../../widgets/sushi_card.dart';
+import '../../product/product_details_page.dart';
 
 class DesktopLayout extends StatelessWidget {
   final String selectedCategory;
@@ -12,11 +12,11 @@ class DesktopLayout extends StatelessWidget {
   final Function(String) updateCategory;
 
   const DesktopLayout({
-    Key? key,
+    super.key,
     required this.selectedCategory,
     required this.filteredSushiItems,
     required this.updateCategory,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +100,11 @@ class DesktopLayout extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const ProductDetailPage(),
+                              builder: (context) => ProductDetailPage(
+                                title: item['title'],
+                                price: item['price'],
+                                image: item['image'],
+                              ),
                             ),
                           );
                         },

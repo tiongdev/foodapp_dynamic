@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../widgets/toggle_button.dart';
+import 'toggle_button.dart';
 
 class UserWidgets {
-  Widget buildNavItem(IconData icon, String label, bool isActive) {
+  Widget buildMobileNavItem(IconData icon, String label, bool isActive) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: Row(
@@ -22,6 +22,48 @@ class UserWidgets {
             ),
           ),
           const SizedBox(width: 12),
+          Text(
+            label,
+            style: GoogleFonts.poppins(
+              color: isActive ? Colors.orange : Colors.white,
+              fontSize: 16,
+              fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
+            ),
+          ),
+          if (isActive)
+            Container(
+              width: 4,
+              height: 24,
+              margin: const EdgeInsets.only(left: 8),
+              decoration: BoxDecoration(
+                color: Colors.orange,
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildDesktopNavItem(IconData icon, String label, bool isActive) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.orange,
+              borderRadius: BorderRadius.circular(8),
+            ),  
+            padding: const EdgeInsets.all(8),
+            child: Icon(
+              icon,
+              color: isActive ? Colors.white : Colors.white,
+              size: 30,
+            ),
+          ),
+          const SizedBox(height: 16),
           Text(
             label,
             style: GoogleFonts.poppins(

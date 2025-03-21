@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
-import 'desktop_layout.dart';
-import 'mobile_layout.dart';
-import 'tablet_layout.dart';
+import 'layouts/desktop_layout.dart';
+import 'layouts/mobile_layout.dart';
+import 'layouts/tablet_layout.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

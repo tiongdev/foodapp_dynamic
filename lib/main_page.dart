@@ -1,9 +1,9 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'features/bag/presentation/pages/bag_page.dart';
-import 'features/home/home_page.dart';
-import 'features/profile/user_profile_page.dart';
+import 'features/presentation/pages/bag/bag_page.dart';
+import 'features/presentation/pages/home/home_page.dart';
+import 'features/presentation/pages/profile/user_profile_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});

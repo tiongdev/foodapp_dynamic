@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodapp_dynamic/features/intro/intro_page.dart';
+import 'package:foodapp_dynamic/features/presentation/pages/intro/intro_page.dart';
 
 void main() => runApp(const MyApp());
 

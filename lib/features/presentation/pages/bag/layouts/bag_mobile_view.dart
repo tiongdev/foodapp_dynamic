@@ -1,7 +1,7 @@
 import 'package:easy_stepper/easy_stepper.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/bag_widgets.dart';
+import '../../../widgets/bag_widgets.dart';
 
 class BagMobileView extends StatefulWidget {
   @override
@@ -9,14 +9,6 @@ class BagMobileView extends StatefulWidget {
 }
 
 class _BagMobileViewState extends State<BagMobileView> {
-  bool _isToggled = false;
-
-  void _handleToggle(bool value) {
-    setState(() {
-      _isToggled = value;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final BagWidgets bagWidgets = BagWidgets();
@@ -69,11 +61,8 @@ class _BagMobileViewState extends State<BagMobileView> {
               // Bag Containers
               bagWidgets.buildBagItems(),
               // Add more items button
-              bagWidgets.buildAddMoreItemsButton(),
-              // Subtotal Container
-              bagWidgets.buildSubtotalContainer(),
 
-              const SizedBox(height: 150),
+              const SizedBox(height: 320),
             ],
           ),
         ),

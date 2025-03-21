@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../widgets/bag_container.dart';
-import '../../../../widgets/toggle_button.dart';
+import 'bag_container.dart';
+import 'toggle_button.dart';
 
 class BagWidgets {
   Widget buildCutleryContainer(bool isToggled, ValueChanged<bool> onToggle) {
@@ -131,74 +131,6 @@ class BagWidgets {
     );
   }
 
-  Widget buildSubtotalContainer() {
-    return Padding(
-      padding: const EdgeInsets.all(10),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(12),
-        child: Container(
-          width: double.infinity,
-          color: Colors.grey[900],
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Subtotal',
-                      style: GoogleFonts.poppins(
-                        color: Colors.white,
-                      ),
-                    ),
-                    Text(
-                      '\$100',
-                      style: GoogleFonts.poppins(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Delivery Fee',
-                      style: GoogleFonts.poppins(
-                        color: Colors.white,
-                      ),
-                    ),
-                    Text(
-                      '\$0',
-                      style: GoogleFonts.poppins(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "You've got free delivery! sushi pro",
-                      style: GoogleFonts.poppins(
-                        color: Colors.white,
-                        fontSize: 10,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
   Widget _buildCutleryContainer({
     required bool isToggled,
     required Function(bool) onToggle,
@@ -257,6 +189,30 @@ class BagWidgets {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Container(
+                    color: isEmbedded ? Colors.orange : Colors.grey[900],
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        '+ Add more items',
+                        style: GoogleFonts.poppins(
+                            color:
+                                isEmbedded ? Colors.grey[900] : Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 12,
+            ),
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Container(
